@@ -59,7 +59,9 @@ public class GameController {
             boolInputs[i][buttonY] = pad[i].y;
 
             // iterate through data, finding this-frame presses
-            for (int j = 0; j < boolInputs[i].length; j++) {boolInputsThis[i][j] = boolInputs[i][j] && !boolInputsLast[i][j];}
+            for (int j = 0; j < boolInputs[i].length; j++) {
+                boolInputsThis[i][j] = boolInputs[i][j] && !boolInputsLast[i][j];
+            }
         }
     }
 }
