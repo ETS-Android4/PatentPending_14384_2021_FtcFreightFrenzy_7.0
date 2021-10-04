@@ -40,9 +40,16 @@ public class GyroOrientDriveTrain {
     public Pair<Double, Double> orientVector(double x, double y) {
         double hype = GyroWrap.vect2hype(x, y);
         double oldRad = GyroWrap.vect2rad(x, y, hype);
-        double newRad = oldRad - gyro.getAngle();
+        double newRad = oldRad + gyro.getAngle();
         double newX = GyroWrap.rad2vectX(newRad, hype);
         double newY = GyroWrap.rad2vectY(newRad, hype);
         return new Pair(newX, newY);
+    }
+
+    // correct angle using gyro sensor to avoid drift
+    public void normalizeGyro(double target, double speed) {
+        tele.addData("angle", gyro.getAngle());
+        tele.update();
+        driveTrain.moveEncoders(0, 0, target - GyroWrap.rad2rot(gyro.getAngle()), speed);
     }
 }

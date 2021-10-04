@@ -20,12 +20,12 @@ public class MechDriveTrain {
     public double inchesPerRotation;
 
     // init, get motor references and speed
-    public MechDriveTrain(Telemetry tele, DcMotorWrap[] motors, double linearSpeed, double turnSpeed, double diagonalDistance) {
+    public MechDriveTrain(Telemetry tele, DcMotorWrap[] motors, double linearSpeed, double turnSpeed, double diagonalDistance, double diagonalGearRatio) {
         this.tele = tele;
         this.motors = motors;
         this.linearSpeed = linearSpeed;
         this.turnSpeed = turnSpeed;
-        this.inchesPerRotation = diagonalDistance * Math.PI;
+        this.inchesPerRotation = diagonalDistance / diagonalGearRatio * Math.PI;
     }
 
     // run at constant power

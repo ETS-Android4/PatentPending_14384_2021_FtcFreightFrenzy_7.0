@@ -15,12 +15,15 @@ public class WarehousePark extends LinearOpMode {
     public void runOpMode() {
 
         // initialize robot
-        bot = new QuadOmni (this, telemetry, hardwareMap);
+        bot = new QuadOmni(this, telemetry, hardwareMap);
 
         // wait for press play
         waitForStart();
 
-        // move left 2 feet (24 inches)
-        bot.driveTrain.moveEncoders(-24, 0, 0, 1);
+        // move forward 2 feet (24 inches)
+        bot.driveTrain.moveEncoders(0, 24, 0, 0.2);
+        bot.driveTrain.normalizeGyro(0, 0.2);
+
+        sleep(2000);
     }
 }

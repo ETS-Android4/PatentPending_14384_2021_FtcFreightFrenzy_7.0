@@ -26,8 +26,8 @@ public class PushBot {
         this.tele = tele;
         DcMotorWrap[] motors = new DcMotorWrap[4];
         for (int i = 0; i < motors.length; i++) {motors[i] = new DcMotorWrap(tele, map, driveTrainNames[i], 3, 1, 1, 1680);}
-        MechDriveTrain mechTrain = new MechDriveTrain(tele, motors, driveLinearSpeed, driveTurnSpeed, 20);
-        GyroWrap gyro = new GyroWrap(op, tele, map, gyroName, 0, false);
+        MechDriveTrain mechTrain = new MechDriveTrain(tele, motors, driveLinearSpeed, driveTurnSpeed, 20, 1);
+        GyroWrap gyro = new GyroWrap(op, tele, map, gyroName, 0, true);
         driveTrain = new GyroOrientDriveTrain(mechTrain, gyro);
     }
 }

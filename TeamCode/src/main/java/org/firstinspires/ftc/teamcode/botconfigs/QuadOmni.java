@@ -24,9 +24,9 @@ public class QuadOmni {
     public QuadOmni(LinearOpMode op, Telemetry tele, HardwareMap map) {
         this.tele = tele;
         DcMotorWrap[] motors = new DcMotorWrap[4];
-        for (int i = 0; i < motors.length; i++) {motors[i] = new DcMotorWrap(tele, map, driveTrainNames[i], 3.5, 1, 1, 420);}
-        MechDriveTrain mechTrain = new MechDriveTrain(tele, motors, driveLinearSpeed, driveTurnSpeed, 15.5);
-        GyroWrap gyro = new GyroWrap(op, tele, map, gyroName, 0, false);
+        for (int i = 0; i < motors.length; i++) {motors[i] = new DcMotorWrap(tele, map, driveTrainNames[i], 3.5, Math.sqrt(2), 1, 420);}
+        MechDriveTrain mechTrain = new MechDriveTrain(tele, motors, driveLinearSpeed, driveTurnSpeed, 15.5, 1 / Math.sqrt(2));
+        GyroWrap gyro = new GyroWrap(op, tele, map, gyroName, 0, true);
         driveTrain = new GyroOrientDriveTrain(mechTrain, gyro);
     }
 }
