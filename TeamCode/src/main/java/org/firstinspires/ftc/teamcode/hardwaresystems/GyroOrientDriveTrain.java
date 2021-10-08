@@ -16,6 +16,9 @@ public class GyroOrientDriveTrain {
     // gyro sensor reference
     public GyroWrap gyro;
 
+    // should we reorient with gyro input
+    public boolean gyroCompOn = true;
+
     // init, get drive train and gyro
     public GyroOrientDriveTrain(MechDriveTrain driveTrain, GyroWrap gyro) {
         this.tele = driveTrain.tele;
@@ -25,8 +28,12 @@ public class GyroOrientDriveTrain {
 
     // run drive train at constant power
     public void run(double x, double y, double rot) {
-        Pair<Double, Double> linear = orientVector(x, y);
-        driveTrain.run(linear.first, linear.second, rot);
+        if (gyroCompOn) {
+            Pair<Double, Double> linear = orientVector(x, y);
+            driveTrain.run(linear.first, linear.second, rot);
+        } else {
+            driveTrain.run(x, y, rot);
+        }
     }
 
     // run drive train using encoders
@@ -48,8 +55,6 @@ public class GyroOrientDriveTrain {
 
     // correct angle using gyro sensor to avoid drift
     public void normalizeGyro(double target, double speed) {
-        tele.addData("angle", gyro.getAngle());
-        tele.update();
         driveTrain.moveEncoders(0, 0, target - GyroWrap.rad2rot(gyro.getAngle()), speed);
     }
 }

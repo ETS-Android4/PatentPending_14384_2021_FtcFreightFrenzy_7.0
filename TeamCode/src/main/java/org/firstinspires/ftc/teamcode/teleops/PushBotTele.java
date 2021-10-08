@@ -35,8 +35,16 @@ public class PushBotTele extends OpMode {
             bot.driveTrain.gyro.startAngle = bot.driveTrain.gyro.getAngleRaw();
         }
 
+        // toggle gyro compensate on B press
+        if (pad.boolInputsThis[0][pad.buttonB]) {
+            bot.driveTrain.gyroCompOn = !bot.driveTrain.gyroCompOn;
+        }
+
         // set drive train power with controller x, y, and rotational input
         bot.driveTrain.run(pad.doubleInputs[0][pad.stickLX], pad.doubleInputs[0][pad.stickLY], pad.doubleInputs[0][pad.stickRX]);
+
+        // give debug data
+        telemetry.addData("gyro on", bot.driveTrain.gyroCompOn);
 
         // push telemetry debugging
         telemetry.update();
