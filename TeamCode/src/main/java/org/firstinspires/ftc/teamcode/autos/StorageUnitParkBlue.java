@@ -23,8 +23,8 @@ public class StorageUnitParkBlue extends LinearOpMode {
         // wait for press play
         waitForStart();
 
-        // move forward 2.5 feet (30 inches)
-        bot.driveTrain.moveEncoders(0, 30, 0, 0.2);
+        // move forward 2.25 feet (27 inches)
+        bot.driveTrain.moveEncoders(0, 27, 0, 0.2);
         bot.driveTrain.normalizeGyro(0, 0.2);
 
         // move sideways 2 feet (24 inches) into storage unit

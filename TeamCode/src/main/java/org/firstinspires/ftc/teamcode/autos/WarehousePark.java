@@ -20,8 +20,8 @@ public class WarehousePark extends LinearOpMode {
         // wait for press play
         waitForStart();
 
-        // move forward 2 feet (24 inches)
-        bot.driveTrain.moveEncoders(0, 24, 0, 0.2);
+        // move backward 2 feet (24 inches)
+        bot.driveTrain.moveEncoders(0, -24, 0, 0.2);
         bot.driveTrain.normalizeGyro(0, 0.2);
     }
 }

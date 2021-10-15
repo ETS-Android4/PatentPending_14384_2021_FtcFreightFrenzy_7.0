@@ -53,9 +53,9 @@ public class MechDriveTrain {
 
     // are all drive motors busy
     public boolean isBusy() {
-        boolean busy = true;
+        boolean busy = false;
         for (int i = 0; i < motors.length; i++) {
-            busy = busy && motors[i].isBusy;
+            busy = busy || motors[i].isBusy;
         }
         return busy;
     }

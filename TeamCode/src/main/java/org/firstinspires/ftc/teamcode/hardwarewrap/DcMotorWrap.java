@@ -69,4 +69,11 @@ public class DcMotorWrap {
             isBusy = false;
         }
     }
+
+    public void moveEncoders(double distance, double speed) {
+        startMoveEncoders(distance, speed);
+        while (motor.isBusy()) {
+            loopMoveEncoders();
+        }
+    }
 }
