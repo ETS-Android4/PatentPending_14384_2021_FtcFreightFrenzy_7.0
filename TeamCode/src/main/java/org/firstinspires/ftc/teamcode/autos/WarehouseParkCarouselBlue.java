@@ -64,7 +64,7 @@ public class WarehouseParkCarouselBlue extends LinearOpMode {
         }
 
         // move backward and towards wall 1 feet (12 inches)
-        bot.driveTrain.moveEncoders(12, -12, 0, 0.2);
+        bot.driveTrain.moveEncoders(isBlue ? 12 : -12, -12, 0, 0.2);
         sleep(waitTime);
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
