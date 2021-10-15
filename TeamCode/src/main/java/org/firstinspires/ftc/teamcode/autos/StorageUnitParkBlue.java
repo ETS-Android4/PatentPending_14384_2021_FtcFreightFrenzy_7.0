@@ -19,6 +19,7 @@ public class StorageUnitParkBlue extends LinearOpMode {
 
         // initialize robot
         bot = new QuadOmni(this, telemetry, hardwareMap);
+        bot.driveTrain.gyroCompOn = false;
 
         // wait for press play
         waitForStart();

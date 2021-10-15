@@ -38,8 +38,12 @@ public class GyroOrientDriveTrain {
 
     // run drive train using encoders
     public void moveEncoders(double x, double y, double rot, double speed) {
-        Pair<Double, Double> linear = orientVector(x, y);
-        driveTrain.moveEncoders(linear.first, linear.second, rot, speed);
+        if (gyroCompOn) {
+            Pair<Double, Double> linear = orientVector(x, y);
+            driveTrain.moveEncoders(linear.first, linear.second, rot, speed);
+        } else {
+            driveTrain.moveEncoders(x, y, rot, speed);
+        }
     }
 
     // rotates the input vector by the opposite of the robot's current angle
