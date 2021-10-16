@@ -24,7 +24,7 @@ public class QuadOmni {
     // carousel wheel properties
     public CarouselWheel carouselWheel;
     public String carouselWheelName = "carousel";
-    public double carouselWheelSpeed = -0.8;
+    public double carouselWheelSpeed = 0.8;
 
     // init, get drive train
     public QuadOmni(LinearOpMode op, Telemetry tele, HardwareMap map) {
