@@ -16,6 +16,11 @@ public class QuadOmniTele extends OpMode {
     // controller reference
     public GameController pad;
 
+    // speed settings
+    public double speedFast = 1;
+    public double speedSlow = 0.2;
+    public boolean isFast = true;
+
     // init, get robot and controller
     @Override
     public void init() {
@@ -40,8 +45,28 @@ public class QuadOmniTele extends OpMode {
             bot.driveTrain.gyroCompOn = !bot.driveTrain.gyroCompOn;
         }
 
+        // toggle speed on X press
+        if (pad.boolInputsThis[0][pad.buttonX]) {
+            isFast = !isFast;
+        }
+
+        // begin spinning carousel wheel on bumper press
+        if (pad.boolInputsThis[0][pad.bumperR]) {
+            bot.carouselWheel.startSpinDuck(1);
+        }
+        if (pad.boolInputsThis[0][pad.bumperL]) {
+            bot.carouselWheel.startSpinDuck(-1);
+        }
+        bot.carouselWheel.motor.loopMoveEncoders();
+
+        // get current speed
+        double speed = isFast ? speedFast : speedSlow;
+
         // set drive train power with controller x, y, and rotational input
-        bot.driveTrain.run(pad.doubleInputs[0][pad.stickLX], pad.doubleInputs[0][pad.stickLY], pad.doubleInputs[0][pad.stickRX]);
+        bot.driveTrain.run(
+                pad.doubleInputs[0][pad.stickLX] * speed,
+                pad.doubleInputs[0][pad.stickLY] * speed,
+                pad.doubleInputs[0][pad.stickRX] * speed);
 
         // give debug data
         telemetry.addData("gyro on", bot.driveTrain.gyroCompOn);

@@ -25,4 +25,9 @@ public class CarouselWheel {
     public void spinDuck(double speed) {
         motor.moveEncoders(carouselDistance, speed);
     }
+
+    // drop a single duck
+    public void startSpinDuck(double speed) {
+        motor.startMoveEncoders(carouselDistance, speed);
+    }
 }
