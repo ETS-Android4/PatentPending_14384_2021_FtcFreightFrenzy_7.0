@@ -6,6 +6,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.hardwaresystems.CarouselWheel;
 import org.firstinspires.ftc.teamcode.hardwaresystems.GyroOrientDriveTrain;
 import org.firstinspires.ftc.teamcode.hardwaresystems.MechDriveTrain;
+import org.firstinspires.ftc.teamcode.hardwaresystems.SharedDeposit;
 import org.firstinspires.ftc.teamcode.hardwarewrap.DcMotorWrap;
 import org.firstinspires.ftc.teamcode.hardwarewrap.GyroWrap;
 
@@ -26,6 +27,13 @@ public class QuadOmni {
     public String carouselWheelName = "carousel";
     public double carouselWheelSpeed = 0.8;
 
+    // shared deposit properties
+    public SharedDeposit sharedDeposit;
+    public String intakeName = "intake";
+    public String hingeName = "hinge";
+    public double intakeSpeed = 1;
+    public double hingeSpeed = 1;
+
     // init, get drive train
     public QuadOmni(LinearOpMode op, Telemetry tele, HardwareMap map) {
 
@@ -39,5 +47,9 @@ public class QuadOmni {
 
         DcMotorWrap carouselMotor = new DcMotorWrap(tele, map, carouselWheelName, 4.25, 1, carouselWheelSpeed, 288);
         carouselWheel = new CarouselWheel(tele, carouselMotor, 15, 1.5);
+
+        DcMotorWrap intake = new DcMotorWrap(tele, map, intakeName, 1, 1, intakeSpeed, 288);
+        DcMotorWrap hinge = new DcMotorWrap(tele, map, hingeName, 1, 1, hingeSpeed, 560);
+        sharedDeposit = new SharedDeposit(tele, intake, hinge);
     }
 }
