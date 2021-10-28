@@ -63,11 +63,22 @@ public class QuadOmniTele extends OpMode {
         }
         bot.carouselWheel.motor.loopMoveEncoders();
 
+        // reverse intake direction on bumper press
+        if (pad.boolInputsThis[1][pad.bumperR]) {
+            bot.sharedDeposit.reverse();
+        }
+        if (pad.boolInputsThis[1][pad.bumperL]) {
+            bot.sharedDeposit.toggleOn();
+        }
+
         // set drive train power with controller x, y, and rotational input
         bot.driveTrain.run(
                 pad.doubleInputs[0][pad.stickLX] * speedSettings[currentSpeed],
                 pad.doubleInputs[0][pad.stickLY] * speedSettings[currentSpeed],
                 pad.doubleInputs[0][pad.stickRX] * speedSettings[currentSpeed]);
+
+        // set arm powers based on controller 2
+        bot.sharedDeposit.run(pad.doubleInputs[1][pad.stickLY]);
 
         // give debug data
         telemetry.addData("gyro on", bot.driveTrain.gyroCompOn);

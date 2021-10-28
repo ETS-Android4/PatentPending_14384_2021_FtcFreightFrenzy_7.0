@@ -31,7 +31,7 @@ public class QuadOmni {
     public SharedDeposit sharedDeposit;
     public String intakeName = "intake";
     public String hingeName = "hinge";
-    public double intakeSpeed = 1;
+    public double intakeSpeed = -1;
     public double hingeSpeed = 1;
 
     // init, get drive train

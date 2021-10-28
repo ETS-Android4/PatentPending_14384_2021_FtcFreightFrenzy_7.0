@@ -12,10 +12,27 @@ public class SharedDeposit {
     public DcMotorWrap intake;
     public DcMotorWrap hinge;
 
+    // current direction of intake
+    boolean in = true;
+    boolean on = true;
+
     // init, get motor reference and measurements
     public SharedDeposit(Telemetry tele, DcMotorWrap intake, DcMotorWrap hinge) {
         this.tele = tele;
         this.intake = intake;
         this.hinge = hinge;
+    }
+
+    public void run(double hingeSpeed) {
+        intake.run(on ? (in ? 1 : -1) : 0);
+        hinge.run(hingeSpeed);
+    }
+
+    public void reverse() {
+        in = !in;
+    }
+
+    public void toggleOn() {
+        on = !on;
     }
 }
