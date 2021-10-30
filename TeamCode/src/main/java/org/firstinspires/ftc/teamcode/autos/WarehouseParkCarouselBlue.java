@@ -57,21 +57,21 @@ public class WarehouseParkCarouselBlue extends LinearOpMode {
 
         // turn so thin side is facing gap
         if (!isBlue) {
-            bot.driveTrain.moveEncoders(0, 0, -0.25, 0.2);
+            bot.driveTrain.moveEncoders(0, 0, 0.25, 0.2);
             sleep(waitTime);
-            bot.driveTrain.normalizeGyro(-0.25, 0.2);
+            bot.driveTrain.normalizeGyro(0.25, 0.2);
             sleep(waitTime);
         }
 
         // move backward and towards wall 1 feet (12 inches)
-        bot.driveTrain.moveEncoders(isBlue ? 12 : -12, -12, 0, 0.2);
+        bot.driveTrain.moveEncoders(12, 12 * (isBlue ? -1 : 1), 0, 0.2);
         sleep(waitTime);
-        bot.driveTrain.normalizeGyro(isBlue ? 0 : -0.25, 0.2);
+        bot.driveTrain.normalizeGyro(isBlue ? 0 : 0.25, 0.2);
         sleep(waitTime);
 
         // move backward 4 feet (48 inches)
-        bot.driveTrain.moveEncoders(0, -48, 0, 0.2);
+        bot.driveTrain.moveEncoders(0, 48 * (isBlue ? -1 : 1), 0, 0.2);
         sleep(waitTime);
-        bot.driveTrain.normalizeGyro(isBlue ? 0 : -0.25, 0.2);
+        bot.driveTrain.normalizeGyro(isBlue ? 0 : 0.25, 0.2);
     }
 }
