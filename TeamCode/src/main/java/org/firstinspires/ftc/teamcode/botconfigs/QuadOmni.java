@@ -32,7 +32,7 @@ public class QuadOmni {
     public String intakeName = "intake";
     public String hingeName = "hinge";
     public double intakeSpeed = -1;
-    public double hingeSpeed = 1;
+    public double hingeSpeed = -1;
 
     // init, get drive train
     public QuadOmni(LinearOpMode op, Telemetry tele, HardwareMap map) {
@@ -49,7 +49,7 @@ public class QuadOmni {
         carouselWheel = new CarouselWheel(tele, carouselMotor, 15, 1.5);
 
         DcMotorWrap intake = new DcMotorWrap(tele, map, intakeName, 1, 1, intakeSpeed, 288);
-        DcMotorWrap hinge = new DcMotorWrap(tele, map, hingeName, 1, 1, hingeSpeed, 560);
+        DcMotorWrap hinge = new DcMotorWrap(tele, map, hingeName, 1, 1, hingeSpeed, 1792);
         sharedDeposit = new SharedDeposit(tele, intake, hinge);
     }
 }

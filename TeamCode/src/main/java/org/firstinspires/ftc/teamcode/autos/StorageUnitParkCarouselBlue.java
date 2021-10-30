@@ -55,10 +55,17 @@ public class StorageUnitParkCarouselBlue extends LinearOpMode {
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
 
-        // move left/forward 0.666 feet (8 inches)
-        bot.driveTrain.moveEncoders(isBlue ? 0 : -8, isBlue ? 8 : 0, 0, 0.2);
+        if (!isBlue) {
+            bot.driveTrain.moveEncoders(0, 0, -0.25, 0.2);
+            sleep(waitTime);
+            bot.driveTrain.normalizeGyro(-0.25, 0.2);
+            sleep(waitTime);
+        }
+
+        // move forward 0.666 feet (8 inches)
+        bot.driveTrain.moveEncoders(0, 8, 0, 0.2);
         sleep(waitTime);
-        bot.driveTrain.normalizeGyro(0, 0.2);
+        bot.driveTrain.normalizeGyro(isBlue ? 0 : -0.25, 0.2);
         sleep(waitTime);
     }
 }

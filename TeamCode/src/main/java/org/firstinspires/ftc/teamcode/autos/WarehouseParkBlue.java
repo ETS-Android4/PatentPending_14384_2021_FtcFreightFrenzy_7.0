@@ -4,11 +4,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.botconfigs.QuadOmni;
 
-@Autonomous(name="WarehousePark", group="FreightFrenzy")
-public class WarehousePark extends LinearOpMode {
+@Autonomous(name="WarehouseParkBlue", group="FreightFrenzy")
+public class WarehouseParkBlue extends LinearOpMode {
 
     // robot reference
     public QuadOmni bot;
+
+    // which alliance the robot is on
+    public boolean isBlue = true;
 
     // run the autonomous
     @Override
@@ -22,7 +25,7 @@ public class WarehousePark extends LinearOpMode {
         waitForStart();
 
         // move backward 2 feet (24 inches)
-        bot.driveTrain.moveEncoders(0, -24, 0, 0.2);
+        bot.driveTrain.moveEncoders(0, 24 * (isBlue ? -1 : 1), 0, 0.2);
         bot.driveTrain.normalizeGyro(0, 0.2);
     }
 }
