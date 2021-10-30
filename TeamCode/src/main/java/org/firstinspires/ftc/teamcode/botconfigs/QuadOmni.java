@@ -25,7 +25,7 @@ public class QuadOmni {
     // carousel wheel properties
     public CarouselWheel carouselWheel;
     public String carouselWheelName = "carousel";
-    public double carouselWheelSpeed = 0.8;
+    public double carouselWheelSpeed = 1;
 
     // shared deposit properties
     public SharedDeposit sharedDeposit;
