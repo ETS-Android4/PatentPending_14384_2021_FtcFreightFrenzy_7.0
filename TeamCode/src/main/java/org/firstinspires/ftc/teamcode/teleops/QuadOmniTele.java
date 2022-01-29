@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.teamcode.GameController;
 import org.firstinspires.ftc.teamcode.botconfigs.QuadOmni;
 import org.firstinspires.ftc.teamcode.hardwarewrap.GyroWrap;
-//hi
+
 // quad omni drive train tele op for PushBot
 @TeleOp(name="QuadOmniTele", group="FreightFrenzy")
 public class QuadOmniTele extends OpMode {
