@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.teamcode.GameController;
 import org.firstinspires.ftc.teamcode.botconfigs.QuadOmni;
+import org.firstinspires.ftc.teamcode.hardwarewrap.GyroWrap;
 
 // quad omni drive train tele op for PushBot
 @TeleOp(name="QuadOmniTele", group="FreightFrenzy")
@@ -19,6 +20,7 @@ public class QuadOmniTele extends OpMode {
     // speed settings
     public double[] speedSettings = {1, 0.5, 0.25};
     public int currentSpeed = 0;
+    public boolean willIntake = false;
 
     // init, get robot and controller
     @Override
@@ -65,16 +67,29 @@ public class QuadOmniTele extends OpMode {
 
         // reverse intake direction on bumper press
         if (pad.boolInputsThis[1][pad.bumperR]) {
-            bot.sharedDeposit.reverse();
+
+            bot.sharedDeposit.incrementDirection(willIntake ? 1 : -1);
+
+            if (bot.sharedDeposit.direction != 0) {
+                willIntake = bot.sharedDeposit.direction == -1;
+            }
         }
-        if (pad.boolInputsThis[1][pad.bumperL]) {
-            bot.sharedDeposit.toggleOn();
+
+        // get drive input from dpad and left stick
+        double xInput = pad.doubleInputs[0][pad.stickLX] + (pad.boolInputs[0][pad.dpadL] ? -1 : 0) + (pad.boolInputs[0][pad.dpadR] ? 1 : 0);
+        double yInput = pad.doubleInputs[0][pad.stickLY] + (pad.boolInputs[0][pad.dpadD] ? -1 : 0) + (pad.boolInputs[0][pad.dpadU] ? 1 : 0);
+
+        // clamp input magnitude within unit circle
+        double length = GyroWrap.vect2hype(xInput, yInput);
+        if (length > 1) {
+            xInput /= length;
+            yInput /= length;
         }
 
         // set drive train power with controller x, y, and rotational input
         bot.driveTrain.run(
-                pad.doubleInputs[0][pad.stickLX] * speedSettings[currentSpeed],
-                pad.doubleInputs[0][pad.stickLY] * speedSettings[currentSpeed],
+                xInput * speedSettings[currentSpeed],
+                yInput * speedSettings[currentSpeed],
                 pad.doubleInputs[0][pad.stickRX] * speedSettings[currentSpeed]);
 
         // set arm powers based on controller 2

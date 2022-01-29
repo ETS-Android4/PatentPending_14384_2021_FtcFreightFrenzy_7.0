@@ -38,7 +38,7 @@ public class StorageUnitParkCarouselBlue extends LinearOpMode {
         sleep(waitTime);
 
         // turn to touch carousel
-        bot.driveTrain.normalizeGyro(0.125 * (isBlue ? 1 : -1), 0.2);
+        bot.driveTrain.normalizeGyro(0.15 * (isBlue ? 1 : -1), 0.2);
         sleep(waitTime);
 
         // spin carousel to drop duck
@@ -49,8 +49,8 @@ public class StorageUnitParkCarouselBlue extends LinearOpMode {
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
 
-        // move left/forward 2 feet (21 inches)
-        bot.driveTrain.moveEncoders(isBlue ? -24 : 0, isBlue ? 0 : 24, 0, 0.2);
+        // move left/forward 2 feet + 1 inch (25 inches)
+        bot.driveTrain.moveEncoders(isBlue ? -25 : 0, isBlue ? 0 : 25, 0, 0.2);
         sleep(waitTime);
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);

@@ -25,14 +25,18 @@ public class GameController {
     public int buttonY = 3;
     public int bumperL = 4;
     public int bumperR = 5;
+    public int dpadR = 6;
+    public int dpadU = 7;
+    public int dpadL = 8;
+    public int dpadD = 9;
 
     // double input data
     public double[][] doubleInputs = new double[2][4];
 
     // boolean input data
-    public boolean[][] boolInputs = new boolean[2][6];
-    public boolean[][] boolInputsLast = new boolean[2][6];
-    public boolean[][] boolInputsThis = new boolean[2][6];
+    public boolean[][] boolInputs = new boolean[2][10];
+    public boolean[][] boolInputsLast = new boolean[2][10];
+    public boolean[][] boolInputsThis = new boolean[2][10];
 
     // init, get controller references
     public GameController(Telemetry tele, Gamepad[] pad) {
@@ -61,6 +65,10 @@ public class GameController {
             boolInputs[i][buttonY] = pad[i].y;
             boolInputs[i][bumperL] = pad[i].left_bumper;
             boolInputs[i][bumperR] = pad[i].right_bumper;
+            boolInputs[i][dpadR] = pad[i].dpad_right;
+            boolInputs[i][dpadU] = pad[i].dpad_up;
+            boolInputs[i][dpadL] = pad[i].dpad_left;
+            boolInputs[i][dpadD] = pad[i].dpad_down;
 
             // iterate through data, finding this-frame presses
             for (int j = 0; j < boolInputs[i].length; j++) {

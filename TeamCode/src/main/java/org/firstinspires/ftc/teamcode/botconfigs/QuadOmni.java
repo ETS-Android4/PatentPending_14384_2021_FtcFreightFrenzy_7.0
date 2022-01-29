@@ -31,8 +31,8 @@ public class QuadOmni {
     public SharedDeposit sharedDeposit;
     public String intakeName = "intake";
     public String hingeName = "hinge";
-    public double intakeSpeed = -1;
-    public double hingeSpeed = -1;
+    public double intakeSpeed = -0.3;
+    public double hingeSpeed = 0.5;
 
     // init, get drive train
     public QuadOmni(LinearOpMode op, Telemetry tele, HardwareMap map) {
@@ -46,10 +46,10 @@ public class QuadOmni {
         driveTrain = new GyroOrientDriveTrain(mechTrain, gyro);
 
         DcMotorWrap carouselMotor = new DcMotorWrap(tele, map, carouselWheelName, 4.25, 1, carouselWheelSpeed, 288);
-        carouselWheel = new CarouselWheel(tele, carouselMotor, 15, 1.5);
+        carouselWheel = new CarouselWheel(tele, carouselMotor, 15, 1.2);
 
-        DcMotorWrap intake = new DcMotorWrap(tele, map, intakeName, 1, 1, intakeSpeed, 288);
-        DcMotorWrap hinge = new DcMotorWrap(tele, map, hingeName, 1, 1, hingeSpeed, 1792);
+        DcMotorWrap intake = new DcMotorWrap(tele, map, intakeName, 1 / Math.PI, 2.778, intakeSpeed, 288);
+        DcMotorWrap hinge = new DcMotorWrap(tele, map, hingeName, 1 / Math.PI, 0.625, hingeSpeed, 3500);
         sharedDeposit = new SharedDeposit(tele, intake, hinge);
     }
 }

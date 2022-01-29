@@ -68,7 +68,7 @@ public class MechDriveTrain {
         }
     }
 
-    // get wheel speeds for dimensional speeds
+    // get wheel speeds from desired robot movement speed
     public double[] calculateSpeeds(double x, double y, double rot) {
         return new double[] {
                 // rf
