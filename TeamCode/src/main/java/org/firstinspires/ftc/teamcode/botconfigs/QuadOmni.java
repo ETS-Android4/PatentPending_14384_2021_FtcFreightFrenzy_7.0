@@ -37,19 +37,31 @@ public class QuadOmni {
     // init, get drive train
     public QuadOmni(LinearOpMode op, Telemetry tele, HardwareMap map) {
 
+        // telemetry debugging
         this.tele = tele;
 
+        // initialize four motors for drive train
         DcMotorWrap[] motors = new DcMotorWrap[4];
         for (int i = 0; i < motors.length; i++) {motors[i] = new DcMotorWrap(tele, map, driveTrainNames[i], 3.5, Math.sqrt(2), 1, 420);}
+        // initialize drive train
         MechDriveTrain mechTrain = new MechDriveTrain(tele, motors, driveLinearSpeed, driveTurnSpeed, 15.5, 1 / Math.sqrt(2));
+        // initialize gyro sensor
         GyroWrap gyro = new GyroWrap(op, tele, map, gyroName, 0, true);
+        // initialize gyro oriented drive train, using old drive train and gyro sensor
         driveTrain = new GyroOrientDriveTrain(mechTrain, gyro);
 
+
+        // initialize motor for carousel wheel
         DcMotorWrap carouselMotor = new DcMotorWrap(tele, map, carouselWheelName, 4.25, 1, carouselWheelSpeed, 288);
+        // initialize carousel wheel
         carouselWheel = new CarouselWheel(tele, carouselMotor, 15, 1.2);
 
+
+        // initialize intake motor for depositing device
         DcMotorWrap intake = new DcMotorWrap(tele, map, intakeName, 1 / Math.PI, 2.778, intakeSpeed, 288);
+        // initialize hinge motor for depositing device
         DcMotorWrap hinge = new DcMotorWrap(tele, map, hingeName, 1 / Math.PI, 0.625, hingeSpeed, 3500);
+        // initialize depositing device
         sharedDeposit = new SharedDeposit(tele, intake, hinge);
     }
 }

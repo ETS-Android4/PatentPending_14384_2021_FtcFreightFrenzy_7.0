@@ -51,7 +51,7 @@ public class QuadOmniTele extends OpMode {
             currentSpeed++;
 
             // if selection is over limit, reset
-            if (currentSpeed >= speedSettings.length){
+            if (currentSpeed >= speedSettings.length) {
                 currentSpeed = 0;
             }
         }
