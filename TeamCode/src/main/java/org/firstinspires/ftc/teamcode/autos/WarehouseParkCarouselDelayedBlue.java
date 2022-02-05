@@ -2,10 +2,11 @@ package org.firstinspires.ftc.teamcode.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
 import org.firstinspires.ftc.teamcode.botconfigs.QuadOmni;
 
-@Autonomous(name="WarehouseParkCarouselBlue", group="FreightFrenzy")
-public class WarehouseParkCarouselBlue extends LinearOpMode {
+@Autonomous(name="WarehouseParkCarouselDelayedBlue", group="FreightFrenzy")
+public class WarehouseParkCarouselDelayedBlue extends LinearOpMode {
 
     // robot reference
     public QuadOmni bot;
@@ -33,8 +34,8 @@ public class WarehouseParkCarouselBlue extends LinearOpMode {
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
 
-        // move forward/left 1.333 feet (16 inches)
-        bot.driveTrain.moveEncoders(isBlue ? 0 : -16, isBlue ? 16 : 0, 0, 0.2);
+        // move forward/left 3.333 feet (40 inches)
+        bot.driveTrain.moveEncoders(isBlue ? 0 : -40, isBlue ? 40 : 0, 0, 0.2);
         sleep(waitTime);
 
         // turn to touch carousel
