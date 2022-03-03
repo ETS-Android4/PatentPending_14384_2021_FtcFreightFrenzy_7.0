@@ -20,7 +20,6 @@ public class MechRampTele extends OpMode {
     // speed settings
     public double[] speedSettings = {1, 0.5, 0.25};
     public int currentSpeed = 0;
-    public boolean willIntake = false;
 
     // init, get robot and controller
     @Override
@@ -64,6 +63,11 @@ public class MechRampTele extends OpMode {
             bot.carouselWheel.startSpinDuck(-1);
         }
         bot.carouselWheel.motor.loopMoveEncoders();
+
+        // toggle intake motor with player 2
+        if (pad.boolInputsThis[1][pad.buttonA]) {
+            bot.intakeRamp.toggleOn();
+        }
 
         // get drive input from dpad and left stick
         double xInput = pad.doubleInputs[0][pad.stickLX] + (pad.boolInputs[0][pad.dpadL] ? -1 : 0) + (pad.boolInputs[0][pad.dpadR] ? 1 : 0);

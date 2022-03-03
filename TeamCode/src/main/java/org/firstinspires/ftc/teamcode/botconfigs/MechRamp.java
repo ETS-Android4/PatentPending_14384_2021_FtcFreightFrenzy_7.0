@@ -25,14 +25,14 @@ public class MechRamp {
     // carousel wheel properties
     public CarouselWheel carouselWheel;
     public String carouselWheelName = "carousel";
-    public double carouselWheelSpeed = 1;
+    public double carouselWheelSpeed = 0.5;
 
     // intake ramp properties
     public IntakeRamp intakeRamp;
     public String intakeName = "intake";
     public String depositName = "deposit";
-    public double intakeSpeed = 1;
-    public double depositSpeed = 1;
+    public double intakeSpeed = 0.5;
+    public double depositSpeed = -0.5;
 
     // init, get drive train
     public MechRamp(LinearOpMode op, Telemetry tele, HardwareMap map) {
@@ -57,10 +57,10 @@ public class MechRamp {
         carouselWheel = new CarouselWheel(tele, carouselMotor, 15, 1.2);
 
         // initialize intake motor for ramp
-        DcMotorWrap intakeMotor = new DcMotorWrap(tele, map, intakeName, 1, 1, intakeSpeed, 288);
+        DcMotorWrap intakeMotor = new DcMotorWrap(tele, map, intakeName, 1, 1, intakeSpeed, 1792);
         // initialize deposit motor for ramp
         DcMotorWrap depositMotor = new DcMotorWrap(tele, map, depositName, 1, 1, depositSpeed, 288);
         // initialize intake ramp with intake and deposit motors
-        IntakeRamp intakeRamp = new IntakeRamp(tele, intakeMotor, depositMotor);
+        intakeRamp = new IntakeRamp(tele, intakeMotor, depositMotor);
     }
 }
