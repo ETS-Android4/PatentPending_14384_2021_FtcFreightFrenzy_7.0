@@ -56,6 +56,7 @@ public class DcMotorWrap {
     // begin running motors with encoders
     public void startMoveEncoders(double distance, double speed) {
         double thisSpeed = this.speed * speed;
+        tele.addData("run dc motor " + name, thisSpeed);
         motor.setTargetPosition(motor.getCurrentPosition() + (int)(distance * ticksPerInch) * (int)Math.signum(thisSpeed));
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motor.setPower(Math.abs(thisSpeed));

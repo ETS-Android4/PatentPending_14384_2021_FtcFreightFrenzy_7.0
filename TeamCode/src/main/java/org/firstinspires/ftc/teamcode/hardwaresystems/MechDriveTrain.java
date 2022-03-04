@@ -42,6 +42,7 @@ public class MechDriveTrain {
         for (int i = 0; i < motors.length; i++) {
             motors[i].startMoveEncoders(distances[i], speed);
         }
+        tele.update();
     }
 
     // loop encoder movement for drive motors

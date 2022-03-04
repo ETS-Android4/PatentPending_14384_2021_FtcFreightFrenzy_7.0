@@ -17,7 +17,7 @@ public class MechRamp {
 
     // drive train properties
     public GyroOrientDriveTrain driveTrain;
-    public String[] driveTrainNames = {"rf", "rb", "lf", "lb"};
+    public String[] driveTrainNames = {"lf", "rb", "rf", "lb"};
     public String gyroName = "gyro";
     public double driveLinearSpeed = 1;
     public double driveTurnSpeed = 1;
