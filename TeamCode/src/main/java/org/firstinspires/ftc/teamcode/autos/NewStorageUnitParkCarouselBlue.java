@@ -27,17 +27,17 @@ public class NewStorageUnitParkCarouselBlue extends LinearOpMode {
         waitForStart();
 
         // move left/forward 0.25 feet (6 inches)
-        bot.driveTrain.moveEncoders(isBlue ? -6 : 0, isBlue ? 0 : 6, 0, 0.2);
+        bot.driveTrain.moveEncoders(isBlue ? 0 : 6, isBlue ? -6 : 0, 0, 0.2);
         sleep(waitTime);
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
 
         // move forward/left 1.333 feet (16 inches)
-        bot.driveTrain.moveEncoders(isBlue ? 0 : -16, isBlue ? 16 : 0, 0, 0.2);
+        bot.driveTrain.moveEncoders(isBlue ? -16 : 0, isBlue ? 0 : 16, 0, 0.2);
         sleep(waitTime);
 
         // turn to touch carousel
-        bot.driveTrain.normalizeGyro(0.2 * (isBlue ? 1 : -1), 0.2);
+        bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
 
         // spin carousel to drop duck
@@ -49,22 +49,15 @@ public class NewStorageUnitParkCarouselBlue extends LinearOpMode {
         sleep(waitTime);
 
         // move left/forward 2 feet + 1 inch (25 inches)
-        bot.driveTrain.moveEncoders(isBlue ? -25 : 0, isBlue ? 0 : 25, 0, 0.2);
+        bot.driveTrain.moveEncoders(isBlue ? 0 : 25, isBlue ? -25 : 0, 0, 0.2);
         sleep(waitTime);
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
 
-        if (!isBlue) {
-            bot.driveTrain.moveEncoders(0, 0, -0.25, 0.2);
-            sleep(waitTime);
-            bot.driveTrain.normalizeGyro(-0.25, 0.2);
-            sleep(waitTime);
-        }
-
         // move forward 0.666 feet (8 inches)
-        bot.driveTrain.moveEncoders(0, 8, 0, 0.2);
+        bot.driveTrain.moveEncoders(isBlue ? -16 : 0, isBlue ? 0 : 16, 0, 0.2);
         sleep(waitTime);
-        bot.driveTrain.normalizeGyro(isBlue ? 0 : -0.25, 0.2);
+        bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
     }
 }

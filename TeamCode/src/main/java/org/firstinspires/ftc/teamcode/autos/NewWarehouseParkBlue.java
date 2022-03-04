@@ -25,7 +25,7 @@ public class NewWarehouseParkBlue extends LinearOpMode {
         waitForStart();
 
         // move backward 2 feet (24 inches)
-        bot.driveTrain.moveEncoders(0, 24 * (isBlue ? -1 : 1), 0, 0.2);
+        bot.driveTrain.moveEncoders(24 * (isBlue ? -1 : 1), 0, 0, 0.2);
         bot.driveTrain.normalizeGyro(0, 0.2);
     }
 }

@@ -27,18 +27,18 @@ public class NewWarehouseParkCarouselBlue extends LinearOpMode {
         // wait for press play
         waitForStart();
 
-        // move left/forward 0.5 feet (6 inches)
-        bot.driveTrain.moveEncoders(isBlue ? -6 : 0, isBlue ? 0 : 6, 0, 0.2);
+        // move left/forward 0.25 feet (6 inches)
+        bot.driveTrain.moveEncoders(isBlue ? 0 : 6, isBlue ? -6 : 0, 0, 0.2);
         sleep(waitTime);
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
 
         // move forward/left 1.333 feet (16 inches)
-        bot.driveTrain.moveEncoders(isBlue ? 0 : -16, isBlue ? 16 : 0, 0, 0.2);
+        bot.driveTrain.moveEncoders(isBlue ? -16 : 0, isBlue ? 0 : 16, 0, 0.2);
         sleep(waitTime);
 
         // turn to touch carousel
-        bot.driveTrain.normalizeGyro(0.2 * (isBlue ? 1 : -1), 0.2);
+        bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
 
         // spin carousel to drop duck
