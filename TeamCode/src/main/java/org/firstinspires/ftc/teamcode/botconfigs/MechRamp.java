@@ -25,7 +25,7 @@ public class MechRamp {
     // carousel wheel properties
     public CarouselWheel carouselWheel;
     public String carouselWheelName = "carousel";
-    public double carouselWheelSpeed = 0.5;
+    public double carouselWheelSpeed = -0.5;
 
     // intake ramp properties
     public IntakeRamp intakeRamp;

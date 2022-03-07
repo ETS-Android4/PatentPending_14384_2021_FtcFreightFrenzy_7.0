@@ -49,13 +49,7 @@ public class NewStorageUnitParkCarouselBlue extends LinearOpMode {
         sleep(waitTime);
 
         // move left/forward 2 feet + 1 inch (25 inches)
-        bot.driveTrain.moveEncoders(isBlue ? 0 : 25, isBlue ? -25 : 0, 0, 0.2);
-        sleep(waitTime);
-        bot.driveTrain.normalizeGyro(0, 0.2);
-        sleep(waitTime);
-
-        // move forward 0.666 feet (8 inches)
-        bot.driveTrain.moveEncoders(isBlue ? -16 : 0, isBlue ? 0 : 16, 0, 0.2);
+        bot.driveTrain.moveEncoders(isBlue ? 0 : 20, isBlue ? -20 : 0, 0, 0.2);
         sleep(waitTime);
         bot.driveTrain.normalizeGyro(0, 0.2);
         sleep(waitTime);
